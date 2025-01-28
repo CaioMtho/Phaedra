@@ -2,8 +2,8 @@ using System.Linq.Expressions;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Phaedra.Server.Models.DTO.Users.User;
-using Phaedra.Server.Models.Entities.Users;
+using Phaedra.Server.DTO.User;
+using Phaedra.Server.Models.Entities.UserEntities;
 using Phaedra.Server.Models.Utilities;
 using Phaedra.Server.Services;
 

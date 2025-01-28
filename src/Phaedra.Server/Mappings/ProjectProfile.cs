@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Phaedra.Server.Models.DTO.Projects.Project;
-using Phaedra.Server.Models.Entities.Projects;
+using Phaedra.Server.DTO.Project;
+using Phaedra.Server.Models.Entities.ProjectEntities;
 
 namespace Phaedra.Server.Mappings
 {

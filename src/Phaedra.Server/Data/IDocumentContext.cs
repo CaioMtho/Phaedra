@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using Phaedra.Server.Models.Entities.Documents;
+using Phaedra.Server.Models.Entities.DocumentEntities;
 
 namespace Phaedra.Server.Data
 {

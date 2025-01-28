@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using MongoDB.Driver;
 using Phaedra.Server.Data;
-using Phaedra.Server.Models.Entities.Documents;
 using System.Linq.Expressions;
+using Phaedra.Server.Models.Entities.DocumentEntities;
 
 namespace Phaedra.Server.Services
 {

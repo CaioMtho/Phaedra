@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Phaedra.Server.Models.Entities.Documents;
+namespace Phaedra.Server.Models.Entities.DocumentEntities;
 
 public class TextSegment : IDocumentComponent
 {

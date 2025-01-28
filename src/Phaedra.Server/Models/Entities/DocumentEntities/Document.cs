@@ -1,7 +1,8 @@
-using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
-namespace Phaedra.Server.Models.Entities.Documents;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace Phaedra.Server.Models.Entities.DocumentEntities;
 
 public class Document : IDocumentComponent
 {

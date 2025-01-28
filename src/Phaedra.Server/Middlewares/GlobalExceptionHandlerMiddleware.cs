@@ -1,6 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 using System.Net;
+using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Newtonsoft.Json;
 namespace Phaedra.Server.Middlewares;
 public class GlobalExceptionHandlerMiddleware(RequestDelegate next, ILogger<GlobalExceptionHandlerMiddleware> logger)
@@ -12,6 +13,7 @@ public class GlobalExceptionHandlerMiddleware(RequestDelegate next, ILogger<Glob
         {typeof(FormatException), HttpStatusCode.BadRequest},
         {typeof(InvalidOperationException), HttpStatusCode.BadRequest},
         {typeof(ValidationException), HttpStatusCode.BadRequest},
+        {typeof(JsonPatchException), HttpStatusCode.BadRequest},
         {typeof(KeyNotFoundException), HttpStatusCode.NotFound}
     };
 

@@ -3,8 +3,8 @@ using BCrypt;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Phaedra.Server.Data;
-using Phaedra.Server.Models.DTO.Users.User;
-using Phaedra.Server.Models.Entities.Users;
+using Phaedra.Server.DTO.User;
+using Phaedra.Server.Models.Entities.UserEntities;
 
 namespace Phaedra.Server.Services
 {

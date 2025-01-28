@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Phaedra.Server.Models.DTO.Users.User;
-using Phaedra.Server.Models.Entities.Users;
+using Phaedra.Server.DTO.User;
+using Phaedra.Server.Models.Entities.UserEntities;
 
 namespace Phaedra.Server.Mappings
 {

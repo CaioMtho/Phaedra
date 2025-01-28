@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
-using Phaedra.Server.Models.Entities.Documents;
 using System.Linq.Expressions;
+using Phaedra.Server.Models.Entities.DocumentEntities;
+
 namespace Phaedra.Server.Services;
 public interface IDocumentService<T> where T : class, IDocumentComponent
 {

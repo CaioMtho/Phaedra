@@ -1,4 +1,4 @@
-namespace Phaedra.Server.Models.DTO.Users.User;
+namespace Phaedra.Server.DTO.User;
 
 public class UpdateUserDto
 {

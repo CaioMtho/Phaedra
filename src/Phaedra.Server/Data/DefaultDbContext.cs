@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Phaedra.Server.Models.Entities.Projects;
-using Phaedra.Server.Models.Entities.Users;
-using Phaedra.Server.Models.Entities.Documents;
+using Phaedra.Server.Models.Entities.ProjectEntities;
+using Phaedra.Server.Models.Entities.UserEntities;
 
 namespace Phaedra.Server.Data;
 

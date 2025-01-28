@@ -2,8 +2,8 @@
 using Phaedra.Server.Models.Utilities;
 using Phaedra.Server.Services;
 using System.Linq.Expressions;
-using Phaedra.Server.Models.Entities.Documents;
 using Microsoft.AspNetCore.JsonPatch;
+using Phaedra.Server.Models.Entities.DocumentEntities;
 
 namespace Phaedra.Server.Controllers
 {

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Phaedra.Server.Models.Shared;
 
-namespace Phaedra.Server.Models.Entities.Users;
+namespace Phaedra.Server.Models.Entities.UserEntities;
 
 public class User : IEntity
 {

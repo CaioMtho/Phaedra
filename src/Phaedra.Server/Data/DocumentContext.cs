@@ -1,5 +1,4 @@
 ﻿using MongoDB.Driver;
-using Phaedra.Server.Models.Entities.Documents;
 
 namespace Phaedra.Server.Data
 {

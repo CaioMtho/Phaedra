@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
-using Phaedra.Server.Models.Entities.Documents;
-using Phaedra.Server.Models.Entities.Users;
+using Phaedra.Server.Models.Entities.DocumentEntities;
+using Phaedra.Server.Models.Entities.UserEntities;
 using Phaedra.Server.Models.Shared;
 
-namespace Phaedra.Server.Models.Entities.Projects;
+namespace Phaedra.Server.Models.Entities.ProjectEntities;
 
 public class Project : IEntity
 {

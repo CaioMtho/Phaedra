@@ -1,4 +1,4 @@
-﻿namespace Phaedra.Server.Models.Entities.Documents
+﻿namespace Phaedra.Server.Models.Entities.DocumentEntities
 {
     public interface IDocumentComponent
     {

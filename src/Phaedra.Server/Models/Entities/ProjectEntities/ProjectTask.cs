@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Phaedra.Server.Models.Shared;
 
-namespace Phaedra.Server.Models.Entities.Projects;
+namespace Phaedra.Server.Models.Entities.ProjectEntities;
 
 public class ProjectTask : IEntity
 {

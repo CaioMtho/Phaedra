@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
 using Phaedra.Server.Data;
-using Phaedra.Server.Models.DTO.Projects.Project;
-using Phaedra.Server.Models.Entities.Projects;
 using System.Linq.Expressions;
+using Phaedra.Server.DTO.Project;
+using Phaedra.Server.Models.Entities.ProjectEntities;
 
 namespace Phaedra.Server.Services
 {
