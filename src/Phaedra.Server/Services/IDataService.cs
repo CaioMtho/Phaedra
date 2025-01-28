@@ -1,13 +1,11 @@
+using Microsoft.AspNetCore.JsonPatch;
 using System.Linq.Expressions;
-using Phaedra.Server.Models.Utilities;
 
 namespace Phaedra.Server.Services;
 
-public interface IDataService<T, TDto, in TCreateDto, in TUpdateDto> 
+public interface IDataService<T, TDto> 
     where T : class 
     where TDto : class 
-    where TCreateDto : class 
-    where TUpdateDto : class
 {
     IQueryable<TDto> Get(
         Expression<Func<T, bool>>? filter = null,
@@ -15,7 +13,8 @@ public interface IDataService<T, TDto, in TCreateDto, in TUpdateDto>
         int? page = null,
         int? pageSize = null);
     Task DeleteAsync(int id);
-    Task<TDto> AddAsync(TCreateDto dto);
-    Task<TDto> UpdateAsync(int id,TUpdateDto dto);
-    
+    Task<TDto> AddAsync<TCreateDto>(TCreateDto dto);
+    Task<TDto> UpdateAsync(int id, JsonPatchDocument<T> patch);
+
+
 }

@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Phaedra.Server.Models.DTO.User;
+namespace Phaedra.Server.Models.DTO.Users.User;
 
-public record CreateUserDto
+public class CreateUserDto
 {
     [Required]
     public string Username { get; init; } = null!;
@@ -11,5 +11,5 @@ public record CreateUserDto
     public string Email { get; init; } = null!;
     [Required]
     public string Password { get; init; } = null!;
-    
+
 }

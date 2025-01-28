@@ -5,7 +5,7 @@ using Phaedra.Server.Models.Shared;
 
 namespace Phaedra.Server.Models.Entities.Projects;
 
-public class Project
+public class Project : IEntity
 {
     [Key]
     public int Id { get; set; }
@@ -17,7 +17,7 @@ public class Project
     public List<ProjectTask> Tasks { get; set; } = [];
     public List<Document> Documents { get; set; } = [new Document()];
     [Required] 
-    public List<User> Users { get; set; } = [];
+    public List<User> Authors { get; set; } = [];
     public DateTime StartDate { get; set; } = DateTime.UtcNow;
     public DateTime EndDate { get; set; } = DateTime.UtcNow;
     public Status Status { get; set; } = Status.Working;

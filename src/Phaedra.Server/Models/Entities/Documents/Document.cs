@@ -1,10 +1,12 @@
+using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
-
+using MongoDB.Bson;
 namespace Phaedra.Server.Models.Entities.Documents;
 
-public class Document
+public class Document : IDocumentComponent
 {
-    [Key]
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
     public int Id { get; set; }
     [MinLength(3, ErrorMessage = "Title must be at least 3 characters long.")]
     [MaxLength(50, ErrorMessage = "Document name must be between 3 and 50 characters")]

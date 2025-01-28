@@ -11,8 +11,4 @@ public class DefaultDbContext(DbContextOptions<DefaultDbContext> options)
     public DbSet<Project> Projects { get; set; }
     public DbSet<ProjectTask> ProjectTasks { get; set; }
     public DbSet<User> Users { get; set; }
-    public DbSet<Document> Documents { get; set; }
-    public DbSet<ContentBlock> ContentBlocks { get; set; }
-    public DbSet<TextSegment> TextSegments { get; set; }
-    public DbSet<TextStyle> TextStyles { get; set; }
 }

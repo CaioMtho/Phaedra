@@ -1,10 +1,10 @@
-namespace Phaedra.Server.Models.DTO.User;
+namespace Phaedra.Server.Models.DTO.Users.User;
 
-public record UserDto
+public class UserDto
 {
     public int Id { get; init; }
     public string Username { get; init; } = null!;
     public string Email { get; init; } = null!;
     public DateTime CreatedAt { get; init; }
-    
+
 }

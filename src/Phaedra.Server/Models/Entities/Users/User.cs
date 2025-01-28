@@ -20,5 +20,5 @@ public class User : IEntity
     [MaxLength(50, ErrorMessage = "Password too long")]
     public string Password { get; set; } = null!;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    
+    public bool IsActive { get; set; } = true;
 }
