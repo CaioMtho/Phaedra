@@ -1,20 +1,43 @@
-﻿using AutoMapper;
-using BCrypt;
+﻿using System.Linq.Expressions;
+using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.JsonPatch.Exceptions;
+using Microsoft.EntityFrameworkCore;
 using Phaedra.Server.Data;
 using Phaedra.Server.DTO.User;
 using Phaedra.Server.Models.Entities.UserEntities;
 
 namespace Phaedra.Server.Services
 {
-    public class UserService : BaseDataService<User, UserDto>
+    public class UserService : IUserService
     {
-        
-        public UserService(DefaultDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        private readonly DefaultDbContext _context;
+        private readonly IMapper _mapper;
+        private readonly DbSet<User> _users;
+
+        public UserService(DefaultDbContext dbContext, IMapper mapper)
         {
+            _context = dbContext;
+            _users = _context.Users;
+            _mapper = mapper;
         }
-        public override async Task<UserDto> UpdateAsync(int id, JsonPatchDocument<User> patch)
+
+        public IQueryable<UserDto> Get(
+        Expression<Func<User, bool>>? filter = null,
+        Func<IQueryable<User>, IOrderedQueryable<User>>? orderBy = null,
+        int? page = null,
+        int? pageSize = null)
+        {
+            var query = filter != null ? _users.Where(filter) : _users.AsQueryable();
+
+            if (orderBy != null)
+                query = orderBy(query);
+
+            if (page.HasValue && pageSize.HasValue)
+                query = query.Skip((page.Value - 1) * pageSize.Value).Take(pageSize.Value);
+            return _mapper.ProjectTo<UserDto>(query);
+        }
+
+        public async Task<UserDto> UpdateAsync(int id, JsonPatchDocument<User> patch)
         {
             if (patch == null)
             {
@@ -26,7 +49,7 @@ namespace Phaedra.Server.Services
                 throw new InvalidOperationException("Modifying the 'Id' property is not allowed.");
             }
 
-            var user = await _dbSet.FindAsync(id) ??
+            var user = await _users.FindAsync(id) ??
                 throw new KeyNotFoundException($"User with ID {id} not found.");
 
             if (patch.Operations.Any(op => op.path.Equals("/Password", StringComparison.OrdinalIgnoreCase)))
@@ -36,41 +59,41 @@ namespace Phaedra.Server.Services
 
                 if (passwordOperation.value is not string newPassword || string.IsNullOrWhiteSpace(newPassword))
                 {
-                   throw new InvalidOperationException("Password cannot be null or empty.");
+                    throw new InvalidOperationException("Password cannot be null or empty.");
                 }
 
                 patch.ApplyTo(user);
                 user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
             }
             else
-            { 
+            {
                 patch.ApplyTo(user);
             }
 
-            if (_dbContext.ChangeTracker.HasChanges())
+            if (_context.ChangeTracker.HasChanges())
             {
-                await _dbContext.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
 
             return _mapper.Map<UserDto>(user);
         }
 
 
-        public override async Task<UserDto> AddAsync<CreateUserDto>(CreateUserDto dto)
+        public async Task<UserDto> AddAsync<CreateUserDto>(CreateUserDto dto)
         {
             ArgumentNullException.ThrowIfNull(dto);
             var user = _mapper.Map<User>(dto);
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            await _dbSet.AddAsync(user);
-            await _dbContext.SaveChangesAsync();
+            await _users.AddAsync(user);
+            await _context.SaveChangesAsync();
             return _mapper.Map<UserDto>(user);
         }
 
-        public override async Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            var user = _dbSet.FirstOrDefault(x => x.Id == id) ?? throw new KeyNotFoundException("User not found");
+            var user = _users.FirstOrDefault(x => x.Id == id) ?? throw new KeyNotFoundException("User not found");
             user.IsActive = false;
-            await _dbContext.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }

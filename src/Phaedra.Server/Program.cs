@@ -1,14 +1,19 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Phaedra.Server.Data;
 using Phaedra.Server.Mappings;
 using Phaedra.Server.Middlewares;
-using Phaedra.Server.Services;
+using Phaedra.Server.Validations.User;
+
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers()
     .AddNewtonsoftJson();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<DefaultDbContext>(options => 
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))

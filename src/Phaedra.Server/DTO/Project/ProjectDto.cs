@@ -10,9 +10,9 @@ namespace Phaedra.Server.DTO.Project
         public int Id { get; init; }
         public string Name { get; init; } = null!;
         public string Description { get; init; } = null!;
-        public List<ProjectTask> Tasks { get; set; } = null!;
-        public List<Document> Documents { get; set; } = null!;
-        public List<UserDto> Authors { get; init; } = null!;
+        public ICollection<ProjectTask> Tasks { get; set; } = null!;
+        public ICollection<int> DocumentIds { get; set; } = null!;
+        public ICollection<int> AuthorIds { get; init; } = null!;
         public DateTime StartDate { get; init; }
         public DateTime EndDate { get; init; }
         public Status Status { get; init; }

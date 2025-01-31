@@ -14,10 +14,10 @@ public class Project : IEntity
     public string Name { get; set; } = "Project";
     [MaxLength(255, ErrorMessage = "Project description cannot be longer than 255 characters.")]
     public string Description { get; set; } = string.Empty;
-    public List<ProjectTask> Tasks { get; set; } = [];
-    public List<Document> Documents { get; set; } = [new Document()];
+    public ICollection<ProjectTask> Tasks { get; set; } = [];
+    public ICollection<int> DocumentIds { get; set; } = [];
     [Required] 
-    public List<User> Authors { get; set; } = [];
+    public ICollection<int> AuthorIds { get; set; } = [];
     public DateTime StartDate { get; set; } = DateTime.UtcNow;
     public DateTime EndDate { get; set; } = DateTime.UtcNow;
     public Status Status { get; set; } = Status.Working;
